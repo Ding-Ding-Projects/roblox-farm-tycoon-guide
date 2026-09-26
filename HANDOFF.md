@@ -1,8 +1,8 @@
 # Guide handoff
 
-## Search implementation candidate, September 26, 2026
+## Search integration candidate, September 26, 2026
 
-The task branch `codex/guide-search-20260926` adds one locally handled search workbench beside the Home field and a search control on each generated wiki page. Home matches catalogue cards and wiki article text; wiki routes match all six articles and catalogue entries. The index is generated from `wiki-source/` by `tools/build-wiki.mjs`. `tools/check-search.mjs` exercises the route inventory and plain-text, regex and invalid-pattern behavior. The existing `tools/check.mjs` also passes. Rendered hidden-browser interaction and new capture evidence are still open, so this candidate is not yet claimed as a verified published feature. The branch is for integration by the guide owner; it does not publish Pages itself.
+The task branch `codex/guide-search-20260926` supplied one locally handled search workbench beside the Home field and a search control on each generated wiki page. Its source through `e9156d9d37e94a03185c1cda73ca8c3077d52002` is now integrated into `main`. Home matches catalogue cards and wiki article text; wiki routes match all six articles and catalogue entries. The index is generated from `wiki-source/` by `tools/build-wiki.mjs`. `tools/check-search.mjs` exercises the route inventory and plain-text, regex and invalid-pattern behavior, and the package build now runs it. Rendered hidden-browser interaction and new capture evidence remain open. Version `0.1.7` and its final provenance build are being prepared; source integration alone does not establish Pages publication.
 
 ## Icon and live Home capture, September 26, 2026
 

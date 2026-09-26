@@ -45,7 +45,7 @@ const nav = [
 ];
 const searchPages = [];
 for (const file of files) {
-  const markdown = readFileSync(join(source, file), "utf8");
+  const markdown = readFileSync(join(source, file), "utf8").replace(/\r\n?/g, "\n");
   const title = /^#\s+(.+)$/m.exec(markdown)?.[1];
   if (!title) throw Error(`Wiki title missing: ${file}`);
   const body = renderMarkdown(markdown);
