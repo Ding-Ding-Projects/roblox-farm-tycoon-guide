@@ -6,6 +6,8 @@ Build locally on Windows with `build.bat`. The site itself is dependency-free st
 
 The original field-guide mark lives in `favicon.svg`. Home and every generated wiki page link it explicitly so browsers do not request a missing domain-root favicon. `tools/check.mjs` verifies the asset and all eight page links during the build.
 
+Home searches catalogue cards and wiki articles. Every wiki route has a local full-guide search over the same reviewed source. The adjacent regex workbench uses the visitor's JavaScript engine for guided patterns, flags, sample matches and local snippets. [Search behavior and limitations](docs/guide/search.md) are documented separately, and `tools/check-search.mjs` runs with the local build check. Rendered browser verification for this new control remains open.
+
 ![Verified Farm Tycoon barn interior](images/barn-dry-hay-entrance.png)
 
 ![Farm Tycoon field guide home at a 390 pixel mobile viewport](docs/captures/guide-home-mobile-0.1.6.png)
