@@ -22,7 +22,9 @@ verifyVersionContract({ release, packageVersion: pkg.version, sourcePackageVersi
   home: readFileSync(new URL("../index.html", import.meta.url), "utf8"),
   wikiPages: wikiVersionPaths.map(path => [path, readFileSync(new URL(`../${path}`, import.meta.url), "utf8")]),
 });
-for (const path of ["index.html", "styles.css", "app.js", "wiki.js", "wiki/index.html", "wiki/World-Lore.html", "wiki/Beta-Status.html", "social-preview.png", "images/barn-dry-hay-entrance.png", "images/arrival-reception-ccc0bd8.png"]) if (!existsSync(new URL(`../${path}`, import.meta.url))) throw Error(`site asset missing: ${path}`);
+for (const path of ["index.html", "styles.css", "app.js", "wiki.js", "wiki/index.html", "wiki/World-Lore.html", "wiki/Beta-Status.html", "favicon.svg", "social-preview.png", "images/barn-dry-hay-entrance.png", "images/arrival-reception-ccc0bd8.png"]) if (!existsSync(new URL(`../${path}`, import.meta.url))) throw Error(`site asset missing: ${path}`);
+const iconLinks = [["index.html", 'href="favicon.svg"'], ...wikiVersionPaths.map(path => [path, 'href="../favicon.svg"'])];
+for (const [path, link] of iconLinks) if (!readFileSync(new URL(`../${path}`, import.meta.url), "utf8").includes(link)) throw Error(`site icon link missing: ${path}`);
 for (const name of ["Home", "Getting-Started", "Crops-and-Items", "Buildings-and-Production", "World-Lore", "Beta-Status"]) {
   const page = readFileSync(new URL(`../wiki/${name}.html`, import.meta.url), "utf8");
   if (!page.includes('property="og:image"') || !page.includes('id="wiki-version"')) throw Error(`wiki page incomplete: ${name}`);

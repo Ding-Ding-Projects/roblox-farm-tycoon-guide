@@ -4,6 +4,8 @@ The [public guide](https://ding-ding-projects.github.io/roblox-farm-tycoon-guide
 
 Build locally on Windows with `build.bat`. The site itself is dependency-free static HTML, CSS, and JavaScript. The one-click script requires Node.js only to record build provenance and check the catalogue inventory. The supported hosted path is GitHub Pages from `main` at `/`.
 
+The original field-guide mark lives in `favicon.svg`. Home and every generated wiki page link it explicitly so browsers do not request a missing domain-root favicon. `tools/check.mjs` verifies the asset and all eight page links during the build.
+
 ![Verified Farm Tycoon barn interior](images/barn-dry-hay-entrance.png)
 
 <details><summary>Catalogue and evidence</summary>

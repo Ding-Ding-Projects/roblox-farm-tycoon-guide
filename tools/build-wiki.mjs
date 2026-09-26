@@ -53,7 +53,9 @@ for (const file of files) {
   const oldVersion = '<p class="version-line" id="wiki-version">Guide version unavailable · Updated time unavailable</p>';
   const mainNav = '<nav aria-label="Main navigation">';
   if (page.split(oldVersion).length !== 2 || page.split(mainNav).length !== 2) throw Error(`Wiki shell markers changed: ${file}`);
-  const frontPage = page.replace(oldVersion, "").replace(mainNav, `<p class="version-line front-version" id="wiki-version" role="status" aria-live="polite">Guide version unavailable · Updated time unavailable</p>${mainNav}`);
+  const frontPage = page.replace(oldVersion, "")
+    .replace(mainNav, `<p class="version-line front-version" id="wiki-version" role="status" aria-live="polite">Guide version unavailable · Updated time unavailable</p>${mainNav}`)
+    .replace('<link rel="stylesheet" href="../styles.css">', '<link rel="icon" type="image/svg+xml" href="../favicon.svg"><link rel="stylesheet" href="../styles.css">');
   const slug = file.replace(/\.md$/, ".html");
   const social = `<meta property="og:title" content="${escape(title)} | Farm Tycoon Field Guide"><meta property="og:description" content="Farm Tycoon field guide wiki: ${escape(title)}"><meta property="og:url" content="https://ding-ding-projects.github.io/roblox-farm-tycoon-guide/wiki/${slug}"><meta property="og:type" content="article"><meta property="og:site_name" content="Farm Tycoon Field Guide"><meta property="og:image" content="https://ding-ding-projects.github.io/roblox-farm-tycoon-guide/social-preview.png"><meta property="og:image:width" content="1264"><meta property="og:image:height" content="830"><meta property="og:image:alt" content="The real Farm Tycoon timber barn interior"><meta name="twitter:card" content="summary_large_image">`;
   writeFileSync(join(output, slug), frontPage.replace("</head>", `${social}</head>`));
