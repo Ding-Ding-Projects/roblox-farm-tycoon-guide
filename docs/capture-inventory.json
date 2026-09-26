@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "records": [
+    {
+      "id": "guide-home-mobile-0.1.6",
+      "active": true,
+      "path": "docs/captures/guide-home-mobile-0.1.6.png",
+      "sourceCommit": "d04c4559400cb100dfa5078052f498ed562b55f7",
+      "artifactSha256": "c2c08a40dc9f45801c8e4c4562d67ae400e2abb4b07d876a7bda396fd56ec8c9",
+      "captureSha256": "a8d60e3a13431d18a88db62ced6b52864ea95497a6256239673ea2fa295719e1",
+      "screen": "home",
+      "state": "default",
+      "theme": "dark",
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "scale": 1,
+      "interactionProofId": "guide-home-mobile-version-before-nav-and-keyboard-focus-0.1.6",
+      "interactionReceiptSha256": "f13445336b5d5821a394fa5714d674c3155b668eb8f9f3ad9f318ad8bda10863",
+      "inspectionStatus": "inspected",
+      "capturedAtUtc": "2026-09-26T07:24:18.790Z",
+      "captureTimezone": "UTC",
+      "privacy": "Reviewed public guide copy and barn image; no account avatar, credentials, private data, or unrelated window is visible."
+    }
+  ]
+}

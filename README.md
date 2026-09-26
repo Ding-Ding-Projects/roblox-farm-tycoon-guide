@@ -8,6 +8,10 @@ The original field-guide mark lives in `favicon.svg`. Home and every generated w
 
 ![Verified Farm Tycoon barn interior](images/barn-dry-hay-entrance.png)
 
+![Farm Tycoon field guide home at a 390 pixel mobile viewport](docs/captures/guide-home-mobile-0.1.6.png)
+
+The guide image above is a genuine capture of the live 0.1.6 home page at a 390 by 844 emulated mobile viewport. The capture was recorded at `2026-09-26T07:24:18.790Z` (UTC) from Pages build `d04c4559400cb100dfa5078052f498ed562b55f7`. The [capture inventory](docs/capture-inventory.json) records its source and image hashes, interaction evidence, and privacy review. A mobile emulator is not a physical phone test.
+
 <details><summary>Catalogue and evidence</summary>
 
 The public catalogue snapshot is in `catalogue.js`; it records 7 crops, 31 items, 4 animals, 13 recipes, 14 buildings, and 4 upgrades from private game source commit `163c8305694d8a25b453031b4bc54bc431af4642`. `Observed locally` means a selected route has real Studio evidence, not that every path or the public server was verified. `In development` means the source defines the entry but the full playable route lacks acceptance. The guide's `release.json` records the running guide version and build time.
