@@ -1,8 +1,8 @@
 # Guide handoff
 
-## Front-screen provenance candidate, September 26, 2026
+## Front-screen provenance publication, September 26, 2026
 
-Guide version `0.1.5` moves the version and updated-at label into the header before navigation on the guide and all seven site-hosted wiki URLs. `version.js` formats `release.json` in the visitor's local timezone with seconds, and preserves an unavailable label if provenance is invalid or cannot be fetched. The hand-written [version inventory](docs/guide/version-surface-inventory.md) names all eight output paths. The focused negative script deliberately removed 15 marker, status or provenance boundaries and observed rejection, then passed on the restored source. This is a source candidate until its exact commit is built, published and read back. Genuine browser captures and the larger per-page feature contract remain open.
+Guide version `0.1.5` moves the version and updated-at label into the header before navigation on the guide and all seven site-hosted wiki URLs. `version.js` formats `release.json` in the visitor's local timezone with seconds, and preserves an unavailable label if provenance is invalid or cannot be fetched. The hand-written [version inventory](docs/guide/version-surface-inventory.md) names all eight output paths. The focused negative script deliberately removed 15 marker, status or provenance boundaries and observed rejection, then passed on the restored source. Source `357fe329ef7f789515b8d84d0a4f6b8091b9ae47` and provenance commit `74b497aaaf063f01268540d1333c8a219f9b1a2b` are on `main`. GitHub Pages reported that exact `74b497a` build as `built` at `2026-09-26T05:55:58Z`; [deployment run 36222226101](https://github.com/Ding-Ding-Projects/roblox-farm-tycoon-guide/actions/runs/36222226101) succeeded. Unauthenticated HTTP readback returned 200 with the front marker before navigation on all eight routes and a matching `0.1.5` release record and version formatter. This is deployed-source and HTTP evidence, not a browser-rendered interaction. Genuine browser captures and the larger per-page feature contract remain open.
 
 ## Definition accuracy update published, September 26, 2026
 
