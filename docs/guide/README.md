@@ -5,3 +5,5 @@
 - [World lore](lore.md)
 
 The live guide contains the searchable cards. These articles explain how the catalogue and lore are maintained.
+
+The [site-hosted wiki](https://ding-ding-projects.github.io/roblox-farm-tycoon-guide/wiki/) provides six navigable public reference pages generated from `wiki-source/`.
