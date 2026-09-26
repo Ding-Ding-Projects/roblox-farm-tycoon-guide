@@ -1,5 +1,7 @@
 import { readFileSync, existsSync } from "node:fs";
+import { execFileSync } from "node:child_process";
 import { crops, animals, recipes, items, buildings, upgrades } from "../catalogue.js";
+import { verifyVersionContract } from "./version-contract.mjs";
 const groups = { crops, animals, recipes, items, buildings, upgrades };
 const expected = { crops: 7, animals: 4, recipes: 13, items: 31, buildings: 14, upgrades: 4 };
 for (const [name, entries] of Object.entries(groups)) {
@@ -14,7 +16,12 @@ for (const recipe of recipes) {
 }
 const release = JSON.parse(readFileSync(new URL("../release.json", import.meta.url), "utf8"));
 const pkg = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
-if (release.version !== pkg.version || !Number.isFinite(Date.parse(release.builtAtUtc)) || !/^[a-f0-9]{40}$/.test(release.sourceCommit)) throw Error("release provenance is invalid or stale");
+const sourcePackage = JSON.parse(execFileSync("git", ["show", `${release.sourceCommit}:package.json`], { encoding: "utf8" }));
+const wikiVersionPaths = ["wiki/index.html", ...["Home", "Getting-Started", "Crops-and-Items", "Buildings-and-Production", "World-Lore", "Beta-Status"].map(name => `wiki/${name}.html`)];
+verifyVersionContract({ release, packageVersion: pkg.version, sourcePackageVersion: sourcePackage.version,
+  home: readFileSync(new URL("../index.html", import.meta.url), "utf8"),
+  wikiPages: wikiVersionPaths.map(path => [path, readFileSync(new URL(`../${path}`, import.meta.url), "utf8")]),
+});
 for (const path of ["index.html", "styles.css", "app.js", "wiki.js", "wiki/index.html", "wiki/World-Lore.html", "wiki/Beta-Status.html", "social-preview.png", "images/barn-dry-hay-entrance.png", "images/arrival-reception-ccc0bd8.png"]) if (!existsSync(new URL(`../${path}`, import.meta.url))) throw Error(`site asset missing: ${path}`);
 for (const name of ["Home", "Getting-Started", "Crops-and-Items", "Buildings-and-Production", "World-Lore", "Beta-Status"]) {
   const page = readFileSync(new URL(`../wiki/${name}.html`, import.meta.url), "utf8");

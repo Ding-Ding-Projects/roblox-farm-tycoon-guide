@@ -6,4 +6,5 @@
 @media(max-width:700px){.wiki-layout{grid-template-columns:1fr}.wiki-nav{flex-direction:row;overflow-x:auto;white-space:nowrap}.wiki-nav a{flex:0 0 auto}}
 @media(max-width:600px){.topbar{align-items:flex-start;flex-direction:column}.topbar nav{margin-left:-.5rem}.topbar nav a{padding:.45rem .5rem}.hero{padding-top:2rem}.controls{display:grid;grid-template-columns:1fr}.controls input,.controls select{width:100%}.section{padding-top:3.5rem;padding-bottom:3.5rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.topbar .front-version{margin:0;max-width:23rem;font-size:.78rem;line-height:1.3;overflow-wrap:anywhere}
 @media(prefers-color-scheme:dark){:root{--bg:#0e211b;--surface:#173128;--surface-high:#244136;--ink:#e4f1e6;--muted:#bbd1c2;--line:#3b5b4c;--primary:#a9dec2;--on-primary:#103d2c;--accent:#627e42;--development:#ffe1a2;--development-bg:#564427;--observed:#bcf1d1;--observed-bg:#265341;--shadow:0 9px 30px rgba(0,0,0,.25)}.lore{background:#203c30}footer{background:#07140f}}

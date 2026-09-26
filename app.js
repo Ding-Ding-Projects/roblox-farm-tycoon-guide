@@ -1,4 +1,5 @@
 import { sourceCommit, crops, animals, recipes, items, buildings, upgrades } from "./catalogue.js";
+import { formatGuideVersion } from "./version.js";
 
 const labels = { crops: "Crop and seed", items: "Item", animals: "Animal", recipes: "Recipe", buildings: "Building", upgrades: "Upgrade" };
 const pace = seconds => Math.max(5, Math.min(30, Math.ceil(seconds / 10)));
@@ -69,8 +70,6 @@ function render() {
 for (const control of [search, category, state]) control.addEventListener(control === search ? "input" : "change", render);
 document.querySelector("#source-revision").textContent = sourceCommit;
 fetch("release.json", { cache: "no-store" }).then(response => response.ok ? response.json() : Promise.reject()).then(release => {
-  const stamp = new Date(release.builtAtUtc);
-  if (!release.version || !Number.isFinite(stamp.getTime())) return;
-  document.querySelector("#version-line").textContent = `Guide ${release.version} · Updated ${stamp.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "long" })}`;
+  document.querySelector("#version-line").textContent = formatGuideVersion(release);
 }).catch(() => {});
 render();

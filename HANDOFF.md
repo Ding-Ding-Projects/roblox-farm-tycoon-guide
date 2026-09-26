@@ -1,5 +1,9 @@
 # Guide handoff
 
+## Front-screen provenance candidate, September 26, 2026
+
+Guide version `0.1.5` moves the version and updated-at label into the header before navigation on the guide and all seven site-hosted wiki URLs. `version.js` formats `release.json` in the visitor's local timezone with seconds, and preserves an unavailable label if provenance is invalid or cannot be fetched. The hand-written [version inventory](docs/guide/version-surface-inventory.md) names all eight output paths. The focused negative script deliberately removed 15 marker, status or provenance boundaries and observed rejection, then passed on the restored source. This is a source candidate until its exact commit is built, published and read back. Genuine browser captures and the larger per-page feature contract remain open.
+
 ## Definition accuracy update published, September 26, 2026
 
 A read-only comparison at game source `f725458da9331fa601104fa37ac48a487df0d41a` found no missing entries in the six catalogue groups, but found that the public land-upgrade card described construction capacity where the running economy rule applies the upgrade to animal placement capacity. Guide version `0.1.4` corrects that effect, distinguishes recipe unlock levels from access to their ingredients and stations, and explains the starter order and five-diamond production acceleration. Source commit `9cae9685119834c07769ba3e9c18858361506074` and provenance commit `c57a7d5cec5be0f4254ca1b778e2c90569fc8419` are on `main`. GitHub Pages reported the exact `c57a7d5` build as `built` at `2026-09-26T05:42:49Z`. Unauthenticated HTTP readback returned 200 and expected content for the root, `app.js`, `catalogue.js`, `release.json`, wiki index, production article and lore article. The native GitHub wiki and Roblox public beta remain open.
