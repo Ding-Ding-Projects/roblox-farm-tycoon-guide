@@ -4,4 +4,4 @@ The source defines seven planting routes: wheat, corn, carrot, soybean, sugarcan
 
 The item catalogue contains 31 named goods: seven planting supplies, seven harvested crops, four animal products, four feeds and nine made goods. Values on the [live guide](https://ding-ding-projects.github.io/roblox-farm-tycoon-guide/#guide) come from a source snapshot, not a promise that a public sale or order is currently available. Its search can locate every individual item and show how it is obtained and used.
 
-The animals are chicken, cow, sheep and pig. Each requires its matching feed and has a collection timer and product. The chicken has selected local purchase, feeding and collection evidence; the others need full earned and live acceptance. See [Buildings and Production](Buildings-and-Production).
+The animals are chicken, cow, sheep and pig. Each requires its matching feed and has a collection timer and product. The chicken has selected local purchase, feeding and collection evidence; the others need full earned and live acceptance. See [Buildings and Production](Buildings-and-Production.md).

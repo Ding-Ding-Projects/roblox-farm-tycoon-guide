@@ -1,6 +1,6 @@
 # Farm Tycoon Field Guide
 
-The [public guide](https://ding-ding-projects.github.io/roblox-farm-tycoon-guide/) explains the current farming catalogue, its costs and timings, original world lore, and the evidence boundary for each feature. It is a documentation and status site, not a playable copy of the Roblox experience. The [wiki](https://github.com/Ding-Ding-Projects/roblox-farm-tycoon-guide/wiki) provides navigable reference pages. Public beta publication is pending verified live play.
+The [public guide](https://ding-ding-projects.github.io/roblox-farm-tycoon-guide/) explains the current farming catalogue, its costs and timings, original world lore, and the evidence boundary for each feature. It is a documentation and status site, not a playable copy of the Roblox experience. [Prepared wiki pages](wiki-source/Home.md) provide navigable reference while GitHub's wiki awaits its first-page initialization. Public beta publication is pending verified live play.
 
 Build locally on Windows with `build.bat`. The site itself is dependency-free static HTML, CSS, and JavaScript. The one-click script requires Node.js only to record build provenance and check the catalogue inventory. The supported hosted path is GitHub Pages from `main` at `/`.
 
