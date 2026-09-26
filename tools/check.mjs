@@ -10,7 +10,7 @@ for (const [name, entries] of Object.entries(groups)) {
 }
 for (const recipe of recipes) {
   if (!items.some(item => item.id === recipe.id)) throw Error(`recipe output missing item: ${recipe.id}`);
-  if (!buildings.some(building => building.id === recipe.station)) throw Error(`recipe station missing building: ${recipe.id}`);
+  if (!buildings.some(building => building.id === recipe.station.toLowerCase())) throw Error(`recipe station missing building: ${recipe.id}`);
 }
 const release = JSON.parse(readFileSync(new URL("../release.json", import.meta.url), "utf8"));
 if (!release.version || !Number.isFinite(Date.parse(release.builtAtUtc)) || !/^[a-f0-9]{40}$/.test(release.sourceCommit)) throw Error("release provenance is invalid");

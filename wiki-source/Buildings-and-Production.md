@@ -1,0 +1,7 @@
+# Buildings and Production
+
+The 14 construction definitions are silo, barn, personal market, supplies shop, restaurant, depot, hotel, restroom, feedmill, bakery, dairy, sugar mill, loom and preserves workshop. Every construction card in the [live guide](https://ding-ding-projects.github.io/roblox-farm-tycoon-guide/#guide) gives its level, exact coin and material cost, current timer and role. The free silo, wheat-funded barn and feedmill have selected local Play routes. A complete 14-building concurrent layout and all earned rotations remain unverified.
+
+The feedmill makes four kinds of animal feed. The bakery makes bread, carrot cake and truffle tart; the dairy makes butter and cheese; the sugar mill makes sugar; the loom makes wool cloth; the preserves workshop makes strawberry jam and apple preserves. Each of the 13 recipe cards lists the input quantity, output quantity, station, level and current timer. Definitions are separate from published production proof.
+
+The four upgrade definitions are barn capacity, silo capacity, production queue and land. The guide records each maximum tier, cost formula and capacity effect. Purchases are server-authoritative; an incomplete request or unavailable saved profile must not be shown as a successful upgrade.

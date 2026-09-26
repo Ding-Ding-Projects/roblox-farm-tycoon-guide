@@ -67,7 +67,7 @@ function render() {
 }
 
 for (const control of [search, category, state]) control.addEventListener(control === search ? "input" : "change", render);
-document.querySelector("#source-link").href = `https://github.com/Ding-Ding-Projects/roblox-farm-tycoon/commit/${sourceCommit}`;
+document.querySelector("#source-revision").textContent = sourceCommit;
 fetch("release.json", { cache: "no-store" }).then(response => response.ok ? response.json() : Promise.reject()).then(release => {
   const stamp = new Date(release.builtAtUtc);
   if (!release.version || !Number.isFinite(stamp.getTime())) return;
