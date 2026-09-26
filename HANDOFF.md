@@ -1,8 +1,8 @@
 # Guide handoff
 
-## Definition accuracy update in progress, September 26, 2026
+## Definition accuracy update published, September 26, 2026
 
-A read-only comparison at game source `f725458da9331fa601104fa37ac48a487df0d41a` found no missing entries in the six catalogue groups, but found that the public land-upgrade card described construction capacity where the running economy rule applies the upgrade to animal placement capacity. Guide version `0.1.4` corrects that effect, distinguishes recipe unlock levels from access to their ingredients and stations, and explains the starter order and five-diamond production acceleration. Build, publication and readback must be recorded after the updated files are committed. The native GitHub wiki and Roblox public beta remain open.
+A read-only comparison at game source `f725458da9331fa601104fa37ac48a487df0d41a` found no missing entries in the six catalogue groups, but found that the public land-upgrade card described construction capacity where the running economy rule applies the upgrade to animal placement capacity. Guide version `0.1.4` corrects that effect, distinguishes recipe unlock levels from access to their ingredients and stations, and explains the starter order and five-diamond production acceleration. Source commit `9cae9685119834c07769ba3e9c18858361506074` and provenance commit `c57a7d5cec5be0f4254ca1b778e2c90569fc8419` are on `main`. GitHub Pages reported the exact `c57a7d5` build as `built` at `2026-09-26T05:42:49Z`. Unauthenticated HTTP readback returned 200 and expected content for the root, `app.js`, `catalogue.js`, `release.json`, wiki index, production article and lore article. The native GitHub wiki and Roblox public beta remain open.
 
 The public guide source was created from Farm Tycoon source commit `163c8305694d8a25b453031b4bc54bc431af4642`. Its definitions and original lore are separate from a Roblox publication. The site labels local observations and development entries separately. The currently selected Studio scene identifies the earlier installed source `535551f43050e87f1f6893a38c484cb656fc6811`; no public beta success is claimed from that local scene.
 
