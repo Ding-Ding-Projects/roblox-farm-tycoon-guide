@@ -14,7 +14,7 @@
 - [ ] Retain built desktop and remaining wiki-route captures with per-route accessibility, interaction and layout evidence. The Home mobile capture does not prove those other states.
 - [ ] Finish the front-screen version proof for the seven wiki routes and desktop Home. The source-level negative check covers all eight route markers, and live HTTP readback found the visible version source on every route; per-route browser interaction remains open.
 - [ ] Expand the guide's site-owned settings and universal feature inventory before claiming full shared-contract completion.
-- [ ] Complete guide translation beyond the new persisted shell controls, then verify language and appearance interaction on Home and every wiki route in the sanctioned hidden browser. Source-level preference checks pass; runtime and full-content evidence remain open.
+- [ ] Verify detailed guide translation and language and appearance interaction on Home and every wiki route in the sanctioned hidden browser. Source-level content and preference checks pass; rendered interaction and full-contract evidence remain open.
 - [ ] Verify the new site-wide search and adjacent regex workbench in a hidden browser on Home and every wiki route, then retain reviewed captures. Source checks pass; runtime interaction remains open.
 
 ## Roblox beta

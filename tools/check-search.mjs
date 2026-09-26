@@ -12,8 +12,8 @@ for (const name of pages) {
 }
 assert.match(readFileSync(new URL("../wiki/index.html", import.meta.url), "utf8"), /src="\.\.\/wiki\.js"/);
 assert.match(readFileSync(new URL("../index.html", import.meta.url), "utf8"), /id="search"/);
-assert.match(readFileSync(new URL("../app.js", import.meta.url), "utf8"), /createSearchWorkbench\(search, render\)/);
-assert.match(readFileSync(new URL("../wiki.js", import.meta.url), "utf8"), /createSearchWorkbench\(input, renderSearch\)/);
+assert.match(readFileSync(new URL("../app.js", import.meta.url), "utf8"), /createSearchWorkbench\(search, render, \(\) => getPreferences\(\)\)/);
+assert.match(readFileSync(new URL("../wiki.js", import.meta.url), "utf8"), /createSearchWorkbench\(input, renderSearch, \(\) => getPreferences\(\)\)/);
 assert(createTextMatcher("WHEAT").match("Golden wheat"));
 assert(!createTextMatcher("wheat").match("Sheep wool"));
 assert(createTextMatcher("^wheat\\b", "i", true).match("Wheat grows"));

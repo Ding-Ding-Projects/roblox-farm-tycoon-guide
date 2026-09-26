@@ -4,10 +4,12 @@ import { resolve, join } from "node:path";
 
 const root = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const source = join(root, "wiki-source");
+const cantoneseSource = join(root, "wiki-source-yue");
 const output = join(root, "wiki");
 const files = readdirSync(source).filter(name => name.endsWith(".md")).sort();
 const expected = ["Beta-Status.md", "Buildings-and-Production.md", "Crops-and-Items.md", "Getting-Started.md", "Home.md", "World-Lore.md"];
 if (JSON.stringify(files) !== JSON.stringify(expected)) throw Error("Wiki page inventory changed; review it before publishing");
+if (JSON.stringify(readdirSync(cantoneseSource).sort()) !== JSON.stringify(expected)) throw Error("Cantonese wiki page inventory changed; review it before publishing");
 
 const escape = text => text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 function inline(text) {
@@ -49,9 +51,12 @@ for (const file of files) {
   const title = /^#\s+(.+)$/m.exec(markdown)?.[1];
   if (!title) throw Error(`Wiki title missing: ${file}`);
   const body = renderMarkdown(markdown);
-  searchPages.push({ title, href: `wiki/${file.replace(/\.md$/, ".html")}`, text: markdown.replace(/[#*`\[\]()]/g, " ").slice(0, 30000) });
+  const cantonese = readFileSync(join(cantoneseSource, file), "utf8").replace(/\r\n?/g, "\n");
+  if (!/^#\s+.+/m.test(cantonese)) throw Error(`Cantonese wiki title missing: ${file}`);
+  const cantoneseBody = renderMarkdown(cantonese);
+  searchPages.push({ title, yueTitle: /^#\s+(.+)$/m.exec(cantonese)[1], href: `wiki/${file.replace(/\.md$/, ".html")}`, text: `${markdown}\n${cantonese}`.replace(/[#*`\[\]()]/g, " ").slice(0, 30000) });
   const links = nav.map(([href, label, key]) => `<a href="${href}" data-guide-copy="${key}"${file.replace(/\.md$/, ".html") === href ? ' aria-current="page"' : ""}>${label}</a>`).join("");
-  const page = `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#123c32"><meta name="description" content="Farm Tycoon field guide wiki: ${escape(title)}"><title>${escape(title)} | Farm Tycoon Field Guide</title><link rel="stylesheet" href="../styles.css"></head><body><a class="skip" href="#wiki-main">Skip to article</a><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">✦</span><span>Farm Tycoon<br><small>Field Guide</small></span></a><nav aria-label="Main navigation"><a href="../index.html#guide">Catalogue</a><a href="../index.html#systems">How it works</a><a href="../index.html#lore">Lore</a><a href="../index.html#status">Beta status</a></nav></header><main id="wiki-main" class="wiki-layout"><nav class="wiki-nav" aria-label="Wiki pages">${links}</nav><article class="wiki-article">${body}<p class="version-line" id="wiki-version">Guide version unavailable · Updated time unavailable</p></article></main><footer><span>Farm Tycoon Field Guide</span><a href="../index.html">Back to the guide</a></footer><script type="module" src="../wiki.js"></script></body></html>\n`;
+  const page = `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#123c32"><meta name="description" content="Farm Tycoon field guide wiki: ${escape(title)}"><title>${escape(title)} | Farm Tycoon Field Guide</title><link rel="stylesheet" href="../styles.css"></head><body><a class="skip" href="#wiki-main">Skip to article</a><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">✦</span><span>Farm Tycoon<br><small>Field Guide</small></span></a><nav aria-label="Main navigation"><a href="../index.html#guide">Catalogue</a><a href="../index.html#systems">How it works</a><a href="../index.html#lore">Lore</a><a href="../index.html#status">Beta status</a></nav></header><main id="wiki-main" class="wiki-layout"><nav class="wiki-nav" aria-label="Wiki pages">${links}</nav><article class="wiki-article"><div class="locale-en" lang="en">${body}</div><div class="locale-yue" lang="yue-Hant-HK" hidden>${cantoneseBody}</div><p class="version-line" id="wiki-version">Guide version unavailable · Updated time unavailable</p></article></main><footer><span>Farm Tycoon Field Guide</span><a href="../index.html">Back to the guide</a></footer><script type="module" src="../wiki.js"></script></body></html>\n`;
   const oldVersion = '<p class="version-line" id="wiki-version">Guide version unavailable · Updated time unavailable</p>';
   const mainNav = '<nav aria-label="Main navigation">';
   if (page.split(oldVersion).length !== 2 || page.split(mainNav).length !== 2) throw Error(`Wiki shell markers changed: ${file}`);

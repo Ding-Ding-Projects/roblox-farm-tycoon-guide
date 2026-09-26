@@ -44,8 +44,9 @@ const copy = {
   backGuide: ["Back to the guide", "返去指南"], backTop: ["Back to top", "返去頂部"], skipGuide: ["Skip to guide", "跳到指南"], skipArticle: ["Skip to article", "跳到文章"],
   cropType: ["Crop and seed", "農作物同種子"], itemType: ["Item", "物品"], animalType: ["Animal", "動物"], recipeType: ["Recipe", "食譜"], buildingType: ["Building", "建築"], upgradeType: ["Upgrade", "升級"],
   entriesShown: ["entries shown", "項資料顯示中"], pagesMatched: ["wiki pages matched", "篇百科文章符合"], guideResults: ["guide results", "項指南結果"],
-  coverage: ["Navigation and settings are translated. Detailed articles and catalogue descriptions currently remain in English.", "導覽同設定已有翻譯；詳細文章同圖鑑說明目前仍然係英文。"],
-  funnyDefaults: ["Both funny levels start at 5. They style the settings message here; wider guide messages, errors, and warnings still need the same treatment.", "兩條幽默滑桿都由 5 開始。目前只會改呢度嘅設定訊息；其他指南訊息、錯誤同警告仲要補返。"],
+  coverage: ["Home content, catalogue descriptions and site-hosted wiki articles have English and Cantonese text.", "主頁內容、圖鑑說明同網站百科文章都有英文同廣東話版本。"],
+  funnyDefaults: ["Both funny levels start at 5. Each changes the tone of its language's guide notes without changing facts, values or evidence labels.", "兩條幽默滑桿都由 5 開始，各自只改對應語言嘅指南筆記語氣，唔改事實、數值或者證據標籤。"],
+  cropsCategory: ["Crops and seeds", "農作物同種子"], itemsCategory: ["Items", "物品"], animalsCategory: ["Animals", "動物"], recipesCategory: ["Recipes", "食譜"], buildingsCategory: ["Buildings", "建築"], upgradesCategory: ["Upgrades", "升級"],
 };
 
 export function translated(key, mode) {
@@ -73,6 +74,7 @@ export function mountGuidePreferences(onChange = () => {}) {
   const paint = () => {
     document.documentElement.dataset.theme = resolveAppearance(state.appearance, !!media?.matches);
     document.documentElement.lang = state.language === "yue" ? "yue-Hant-HK" : state.language === "bilingual" ? "en-HK" : "en";
+    region.setAttribute("aria-label", translated("settings", state.language));
     for (const element of document.querySelectorAll("[data-guide-copy]")) element.textContent = translated(element.dataset.guideCopy, state.language);
     for (const [key, value] of Object.entries(state)) {
       const control = region.querySelector(`[data-pref="${key}"]`);

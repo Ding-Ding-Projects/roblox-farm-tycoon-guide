@@ -1,5 +1,11 @@
 # Guide handoff
 
+## Full-content language candidate, September 26, 2026
+
+The `codex/guide-full-content-20260926` branch adds written Hong Kong Cantonese counterparts for detailed Home prose, every catalogue card, and all six site-hosted wiki article bodies. The English source remains available, while bilingual mode displays both. Home, catalogue, and wiki each have a visible note whose English and Cantonese wording responds separately to its 1 through 5 humor setting. Costs, levels, timers, source revisions, evidence labels, and published-beta claims remain tied to the existing source facts. The search workbench gains Cantonese controls and explanation, and source search covers Cantonese wiki and catalogue terms. A narrow CSS rule reduces the regex checkbox to a normal size while retaining its 44-pixel label target.
+
+`npm run build` passed the catalogue, search, preferences, and localization source checks. `node tools/check-localization.mjs --negative` rejected a simulated missing Cantonese article, then the intact inventory passed. The public-vocabulary scan found zero findings across the changed files. Fresh hidden-browser interaction and captures still need to bind to the exact delivered candidate. Existing version `0.1.8` publication evidence below remains historical and does not verify this candidate. The native repository wiki, Roblox public beta, and broader per-page interface contract remain open.
+
 ## Partial language and appearance integration, September 26, 2026
 
 Source through `312acca34b562be62ed0b90f78a566176dceb6c9` from `codex/guide-language-20260926` is integrated into `main`. Home and seven site-hosted wiki URLs now have persisted English, Hong Kong Cantonese and bilingual shell controls, independent English and Cantonese tone sliders defaulting to 5, and device, light or dark appearance. The settings panel and [scope article](docs/guide/language-and-appearance.md) disclose that detailed Home prose, wiki article bodies, catalogue descriptions, the search workbench, image descriptions and version copy remain English. Preference, search and catalogue source checks passed, including a deliberate missing-route regression. The sanctioned hidden browser transport returned a connection refusal, so no new rendered interaction or capture is claimed.
