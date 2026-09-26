@@ -13,8 +13,9 @@ for (const recipe of recipes) {
   if (!buildings.some(building => building.id === recipe.station.toLowerCase())) throw Error(`recipe station missing building: ${recipe.id}`);
 }
 const release = JSON.parse(readFileSync(new URL("../release.json", import.meta.url), "utf8"));
-if (!release.version || !Number.isFinite(Date.parse(release.builtAtUtc)) || !/^[a-f0-9]{40}$/.test(release.sourceCommit)) throw Error("release provenance is invalid");
+const pkg = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
+if (release.version !== pkg.version || !Number.isFinite(Date.parse(release.builtAtUtc)) || !/^[a-f0-9]{40}$/.test(release.sourceCommit)) throw Error("release provenance is invalid or stale");
 for (const path of ["index.html", "styles.css", "app.js", "social-preview.png", "images/barn-dry-hay-entrance.png", "images/arrival-reception-ccc0bd8.png"]) if (!existsSync(new URL(`../${path}`, import.meta.url))) throw Error(`site asset missing: ${path}`);
 const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
-for (const marker of ['id="guide"', 'id="lore"', 'id="status"', 'property="og:image"', 'name="twitter:card"']) if (!html.includes(marker)) throw Error(`site route or metadata missing: ${marker}`);
+for (const marker of ['id="guide"', 'id="systems"', 'id="lore"', 'id="status"', 'property="og:image"', 'name="twitter:card"']) if (!html.includes(marker)) throw Error(`site route or metadata missing: ${marker}`);
 console.log(`Guide inventory: ${Object.entries(groups).map(([name, list]) => `${list.length} ${name}`).join(", ")}.`);

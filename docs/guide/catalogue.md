@@ -8,4 +8,4 @@ The catalogue must be updated whenever the private game definitions change. Revi
 
 **Verification:** `node tools/check.mjs` checks exact category counts, unique IDs, recipe outputs and stations, status labels, assets, and build provenance. The live page must also be checked in a browser at desktop and narrow widths.
 
-**Suggested articles:** [World lore](lore.md), [guide index](README.md), and the [live field guide](https://ding-ding-projects.github.io/roblox-farm-tycoon-guide/).
+**Suggested articles:** [Farm systems](systems.md), [World lore](lore.md), [guide index](README.md), and the [live field guide](https://ding-ding-projects.github.io/roblox-farm-tycoon-guide/).
