@@ -1,5 +1,9 @@
 # Guide handoff
 
+## Search implementation candidate, September 26, 2026
+
+The task branch `codex/guide-search-20260926` adds one locally handled search workbench beside the Home field and a search control on each generated wiki page. Home matches catalogue cards and wiki article text; wiki routes match all six articles and catalogue entries. The index is generated from `wiki-source/` by `tools/build-wiki.mjs`. `tools/check-search.mjs` exercises the route inventory and plain-text, regex and invalid-pattern behavior. The existing `tools/check.mjs` also passes. Rendered hidden-browser interaction and new capture evidence are still open, so this candidate is not yet claimed as a verified published feature. The branch is for integration by the guide owner; it does not publish Pages itself.
+
 ## Icon and live Home capture, September 26, 2026
 
 Guide source `8956a659d95a20bd35936db1c3082753a4bf4cd3` adds an original SVG icon and explicit links on Home and all seven generated wiki routes. Provenance commit `d04c4559400cb100dfa5078052f498ed562b55f7` records version `0.1.6`; GitHub Pages reported that exact build as `built` at `2026-09-26T07:22:05Z`. Unauthenticated readback returned HTTP 200 for Home, the icon, `release.json`, the wiki index and six wiki articles, with the expected icon link on every HTML route. A fresh isolated browser run at a 390 by 844 emulated mobile viewport saw the 0.1.6 version before navigation, no body overflow, 15 visible named controls, a root accessibility tree, a visible keyboard focus path, zero console errors or exceptions, and zero bad, failed or third-party network requests. The icon check turned red when a wiki page link was removed in a disposable copy, then passed on the intact source.

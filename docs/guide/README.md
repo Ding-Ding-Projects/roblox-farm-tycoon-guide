@@ -4,6 +4,7 @@
 - [Farm systems](systems.md)
 - [World lore](lore.md)
 - [Running version surface inventory](version-surface-inventory.md)
+- [Guide search and regex workbench](search.md)
 
 The live guide contains the searchable cards. These articles explain how the catalogue and lore are maintained.
 

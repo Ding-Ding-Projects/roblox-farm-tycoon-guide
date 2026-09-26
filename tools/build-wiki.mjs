@@ -43,11 +43,13 @@ const nav = [
   ["Home.html", "Home"], ["Getting-Started.html", "Getting started"], ["Crops-and-Items.html", "Crops and items"],
   ["Buildings-and-Production.html", "Buildings and production"], ["World-Lore.html", "World lore"], ["Beta-Status.html", "Beta status"],
 ];
+const searchPages = [];
 for (const file of files) {
   const markdown = readFileSync(join(source, file), "utf8");
   const title = /^#\s+(.+)$/m.exec(markdown)?.[1];
   if (!title) throw Error(`Wiki title missing: ${file}`);
   const body = renderMarkdown(markdown);
+  searchPages.push({ title, href: `wiki/${file.replace(/\.md$/, ".html")}`, text: markdown.replace(/[#*`\[\]()]/g, " ").slice(0, 30000) });
   const links = nav.map(([href, label]) => `<a href="${href}"${file.replace(/\.md$/, ".html") === href ? ' aria-current="page"' : ""}>${label}</a>`).join("");
   const page = `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#123c32"><meta name="description" content="Farm Tycoon field guide wiki: ${escape(title)}"><title>${escape(title)} | Farm Tycoon Field Guide</title><link rel="stylesheet" href="../styles.css"></head><body><a class="skip" href="#wiki-main">Skip to article</a><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">✦</span><span>Farm Tycoon<br><small>Field Guide</small></span></a><nav aria-label="Main navigation"><a href="../index.html#guide">Catalogue</a><a href="../index.html#systems">How it works</a><a href="../index.html#lore">Lore</a><a href="../index.html#status">Beta status</a></nav></header><main id="wiki-main" class="wiki-layout"><nav class="wiki-nav" aria-label="Wiki pages">${links}</nav><article class="wiki-article">${body}<p class="version-line" id="wiki-version">Guide version unavailable · Updated time unavailable</p></article></main><footer><span>Farm Tycoon Field Guide</span><a href="../index.html">Back to the guide</a></footer><script type="module" src="../wiki.js"></script></body></html>\n`;
   const oldVersion = '<p class="version-line" id="wiki-version">Guide version unavailable · Updated time unavailable</p>';
@@ -61,4 +63,5 @@ for (const file of files) {
   writeFileSync(join(output, slug), frontPage.replace("</head>", `${social}</head>`));
 }
 writeFileSync(join(output, "index.html"), readFileSync(join(output, "Home.html"), "utf8").replace("https://ding-ding-projects.github.io/roblox-farm-tycoon-guide/wiki/Home.html", "https://ding-ding-projects.github.io/roblox-farm-tycoon-guide/wiki/"));
+writeFileSync(join(root, "search-index.js"), `// Generated from reviewed wiki-source Markdown. Do not edit by hand.\nexport const wikiPages = ${JSON.stringify(searchPages)};\n`);
 console.log(`Built ${files.length} site-hosted wiki pages.`);

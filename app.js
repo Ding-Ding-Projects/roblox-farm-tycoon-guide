@@ -1,5 +1,7 @@
 import { sourceCommit, crops, animals, recipes, items, buildings, upgrades } from "./catalogue.js";
 import { formatGuideVersion } from "./version.js";
+import { createSearchWorkbench } from "./search-workbench.js";
+import { wikiPages } from "./search-index.js";
 
 const labels = { crops: "Crop and seed", items: "Item", animals: "Animal", recipes: "Recipe", buildings: "Building", upgrades: "Upgrade" };
 const pace = seconds => Math.max(5, Math.min(30, Math.ceil(seconds / 10)));
@@ -46,10 +48,14 @@ const search = document.querySelector("#search");
 const category = document.querySelector("#category");
 const state = document.querySelector("#state");
 const count = document.querySelector("#result-count");
+const wikiResults = document.createElement("div");
+wikiResults.className = "search-results";
+wikiResults.setAttribute("aria-live", "polite");
+count.after(wikiResults);
+const workbench = createSearchWorkbench(search, render);
 
 function render() {
-  const term = search.value.trim().toLocaleLowerCase();
-  const subset = records.filter(entry => (category.value === "all" || entry.category === category.value) && (state.value === "all" || entry.status === state.value) && (!term || `${entry.name} ${entry.id} ${details(entry.category, entry).join(" ")}`.toLocaleLowerCase().includes(term)));
+  const subset = records.filter(entry => (category.value === "all" || entry.category === category.value) && (state.value === "all" || entry.status === state.value) && workbench.matcher(`${entry.name} ${entry.id} ${details(entry.category, entry).join(" ")}`));
   cards.replaceChildren();
   const fragment = document.createDocumentFragment();
   for (const entry of subset) {
@@ -65,6 +71,14 @@ function render() {
   }
   cards.append(fragment);
   count.textContent = `${subset.length} of ${records.length} entries shown`;
+  wikiResults.replaceChildren();
+  if (search.value.trim()) {
+    const matches = wikiPages.filter(page => workbench.matcher(`${page.title} ${page.text}`));
+    const heading = document.createElement("h3"); heading.textContent = `${matches.length} wiki pages matched`;
+    const list = document.createElement("ul");
+    for (const page of matches) { const li = document.createElement("li"); const a = document.createElement("a"); a.href = page.href; a.textContent = page.title; li.append(a); list.append(li); }
+    wikiResults.append(heading, list);
+  }
 }
 
 for (const control of [search, category, state]) control.addEventListener(control === search ? "input" : "change", render);
