@@ -5,6 +5,7 @@
 - [World lore](lore.md)
 - [Running version surface inventory](version-surface-inventory.md)
 - [Guide search and regex workbench](search.md)
+- [Language and appearance preferences](language-and-appearance.md)
 
 The live guide contains the searchable cards. These articles explain how the catalogue and lore are maintained.
 

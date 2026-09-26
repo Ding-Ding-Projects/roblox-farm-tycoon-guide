@@ -18,29 +18,30 @@
   <title>Farm Tycoon Field Guide</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="guide-preferences.css">
 </head>
 <body>
-  <a class="skip" href="#main">Skip to guide</a>
+  <a class="skip" href="#main" data-guide-copy="skipGuide">Skip to guide</a>
   <header class="topbar">
     <a class="brand" href="#home" aria-label="Farm Tycoon Field Guide home"><span class="brand-mark" aria-hidden="true">✦</span><span>Farm Tycoon<br><small>Field Guide</small></span></a>
     <p class="version-line front-version" id="version-line" role="status" aria-live="polite">Guide version unavailable · Updated time unavailable</p>
     <nav aria-label="Main navigation">
-      <a href="#guide">Guide</a><a href="#systems">How it works</a><a href="#lore">Lore</a><a href="#status">Beta status</a><a href="wiki/index.html">Wiki</a>
+      <a href="#guide" data-guide-copy="catalogue">Guide</a><a href="#systems" data-guide-copy="how">How it works</a><a href="#lore" data-guide-copy="lore">Lore</a><a href="#status" data-guide-copy="beta">Beta status</a><a href="wiki/index.html" data-guide-copy="wiki">Wiki</a>
     </nav>
   </header>
   <main id="main">
     <section class="hero" id="home" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow">An honest guide to a growing world</p>
-        <h1 id="hero-title">From first seed to a working town.</h1>
+        <p class="eyebrow" data-guide-copy="heroEyebrow">An honest guide to a growing world</p>
+        <h1 id="hero-title" data-guide-copy="heroTitle">From first seed to a working town.</h1>
         <p>Find what each crop, item, animal, recipe and building does, what it costs, and whether its route has been seen working in Studio. The public Roblox beta is being prepared. This guide marks work in progress plainly.</p>
         <a class="primary-button" href="#guide">Explore the guide <span aria-hidden="true">→</span></a>
       </div>
       <figure class="hero-image"><img src="images/barn-dry-hay-entrance.png" alt="Inside the timber barn, with a rounded hay stack beside its entry" width="1264" height="830"><figcaption>Verified development capture. The Roblox beta is not yet published.</figcaption></figure>
     </section>
     <section class="section guide" id="guide" aria-labelledby="guide-title">
-      <div class="section-head"><div><p class="eyebrow">The field manual</p><h2 id="guide-title">Everything in the current catalogue</h2><p>Values follow the source revision shown below. Timers use the current compact pacing rule. A source definition or local observation does not establish public-server availability.</p></div></div>
-      <div class="controls" role="search"><label for="search">Search the guide</label><input id="search" type="search" autocomplete="off" placeholder="Try wheat, bakery, wool…"><label for="category">Category</label><select id="category"><option value="all">All categories</option><option value="crops">Crops and seeds</option><option value="items">Items</option><option value="animals">Animals</option><option value="recipes">Recipes</option><option value="buildings">Buildings</option><option value="upgrades">Upgrades</option></select><label for="state">Evidence</label><select id="state"><option value="all">All statuses</option><option value="observed">Observed locally</option><option value="development">In development</option></select></div>
+      <div class="section-head"><div><p class="eyebrow" data-guide-copy="manual">The field manual</p><h2 id="guide-title" data-guide-copy="catalogueTitle">Everything in the current catalogue</h2><p>Values follow the source revision shown below. Timers use the current compact pacing rule. A source definition or local observation does not establish public-server availability.</p></div></div>
+      <div class="controls" role="search"><label for="search" data-guide-copy="guideSearch">Search the guide</label><input id="search" type="search" autocomplete="off" placeholder="Try wheat, bakery, wool…"><label for="category" data-guide-copy="category">Category</label><select id="category"><option value="all" data-guide-copy="allCategories">All categories</option><option value="crops">Crops and seeds</option><option value="items">Items</option><option value="animals">Animals</option><option value="recipes">Recipes</option><option value="buildings">Buildings</option><option value="upgrades">Upgrades</option></select><label for="state" data-guide-copy="evidence">Evidence</label><select id="state"><option value="all" data-guide-copy="allStatuses">All statuses</option><option value="observed" data-guide-copy="observed">Observed locally</option><option value="development" data-guide-copy="development">In development</option></select></div>
       <p class="result-count" id="result-count" role="status" aria-live="polite"></p>
       <div class="cards" id="cards"></div>
       <p class="source-note">Catalogue source revision: <code id="source-revision"></code>. Source is private; this public guide includes only gameplay definitions and reviewed captures.</p>

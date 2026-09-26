@@ -2,8 +2,10 @@ import { sourceCommit, crops, animals, recipes, items, buildings, upgrades } fro
 import { formatGuideVersion } from "./version.js";
 import { createSearchWorkbench } from "./search-workbench.js";
 import { wikiPages } from "./search-index.js";
+import { mountGuidePreferences, translated } from "./guide-preferences.js";
 
-const labels = { crops: "Crop and seed", items: "Item", animals: "Animal", recipes: "Recipe", buildings: "Building", upgrades: "Upgrade" };
+let getPreferences = () => ({ language: "en" });
+
 const pace = seconds => Math.max(5, Math.min(30, Math.ceil(seconds / 10)));
 const cropById = new Map(crops.map(x => [x.id, x]));
 const animalByProduct = new Map(animals.map(x => [x.product.toLowerCase(), x]));
@@ -61,8 +63,8 @@ function render() {
   for (const entry of subset) {
     const article = document.createElement("article"); article.className = "card"; article.id = `${entry.category}-${entry.id}`;
     const top = document.createElement("div"); top.className = "card-top";
-    const label = document.createElement("span"); label.className = "type"; label.textContent = labels[entry.category];
-    const status = document.createElement("span"); status.className = `badge ${entry.status}`; status.textContent = entry.status === "observed" ? "Observed locally" : "In development";
+    const label = document.createElement("span"); label.className = "type"; label.textContent = translated(({ crops: "cropType", items: "itemType", animals: "animalType", recipes: "recipeType", buildings: "buildingType", upgrades: "upgradeType" })[entry.category], getPreferences().language);
+    const status = document.createElement("span"); status.className = `badge ${entry.status}`; status.textContent = translated(entry.status === "observed" ? "observed" : "development", getPreferences().language);
     top.append(label, status);
     const title = document.createElement("h3"); title.textContent = entry.name;
     const list = document.createElement("ul");
@@ -70,11 +72,11 @@ function render() {
     article.append(top, title, list); fragment.append(article);
   }
   cards.append(fragment);
-  count.textContent = `${subset.length} of ${records.length} entries shown`;
+  count.textContent = `${subset.length} / ${records.length} ${translated("entriesShown", getPreferences().language)}`;
   wikiResults.replaceChildren();
   if (search.value.trim()) {
     const matches = wikiPages.filter(page => workbench.matcher(`${page.title} ${page.text}`));
-    const heading = document.createElement("h3"); heading.textContent = `${matches.length} wiki pages matched`;
+    const heading = document.createElement("h3"); heading.textContent = `${matches.length} ${translated("pagesMatched", getPreferences().language)}`;
     const list = document.createElement("ul");
     for (const page of matches) { const li = document.createElement("li"); const a = document.createElement("a"); a.href = page.href; a.textContent = page.title; li.append(a); list.append(li); }
     wikiResults.append(heading, list);
@@ -86,4 +88,5 @@ document.querySelector("#source-revision").textContent = sourceCommit;
 fetch("release.json", { cache: "no-store" }).then(response => response.ok ? response.json() : Promise.reject()).then(release => {
   document.querySelector("#version-line").textContent = formatGuideVersion(release);
 }).catch(() => {});
+getPreferences = mountGuidePreferences(render);
 render();
