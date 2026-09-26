@@ -8,6 +8,8 @@ The original field-guide mark lives in `favicon.svg`. Home and every generated w
 
 Home searches catalogue cards and wiki articles. Every wiki route has a local full-guide search over the same reviewed source. The adjacent regex workbench uses the visitor's JavaScript engine for guided patterns, flags, sample matches and local snippets. [Search behavior and limitations](docs/guide/search.md) are documented separately, and `tools/check-search.mjs` runs with the local build check. Rendered browser verification for this new control remains open.
 
+The shared [language and appearance controls](docs/guide/language-and-appearance.md) offer English, Hong Kong Cantonese, bilingual, independent tone levels and device, light or dark appearance on Home and every site-hosted wiki route. Translation currently covers the navigation, settings and selected guide labels; detailed articles and catalogue descriptions remain English. The settings panel discloses that limit. Source checks pass, while new browser interaction and capture evidence remain open.
+
 ![Verified Farm Tycoon barn interior](images/barn-dry-hay-entrance.png)
 
 ![Farm Tycoon field guide home at a 390 pixel mobile viewport](docs/captures/guide-home-mobile-0.1.6.png)

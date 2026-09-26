@@ -1,5 +1,9 @@
 # Guide handoff
 
+## Partial language and appearance integration, September 26, 2026
+
+Source through `312acca34b562be62ed0b90f78a566176dceb6c9` from `codex/guide-language-20260926` is integrated into `main`. Home and seven site-hosted wiki URLs now have persisted English, Hong Kong Cantonese and bilingual shell controls, independent English and Cantonese tone sliders defaulting to 5, and device, light or dark appearance. The settings panel and [scope article](docs/guide/language-and-appearance.md) disclose that detailed Home prose, wiki article bodies, catalogue descriptions, the search workbench, image descriptions and version copy remain English. Preference, search and catalogue source checks passed, including a deliberate missing-route regression. The sanctioned hidden browser transport returned a connection refusal, so no new rendered interaction or capture is claimed. Version `0.1.8` source and provenance publication are being prepared; this integration is a partial increment, not full page localization.
+
 ## Search integration candidate, September 26, 2026
 
 The task branch `codex/guide-search-20260926` supplied one locally handled search workbench beside the Home field and a search control on each generated wiki page. Its source through `e9156d9d37e94a03185c1cda73ca8c3077d52002` is integrated into `main`. Home matches catalogue cards and wiki article text; wiki routes match all six articles and catalogue entries. The index is generated from `wiki-source/` by `tools/build-wiki.mjs`, with normalized line endings so two local builds produce the same hash. `tools/check-search.mjs` exercises the route inventory and plain-text, regex and invalid-pattern behavior, and the package build runs it.
