@@ -1,5 +1,5 @@
 const KEY = "farm-tycoon-guide-preferences-v1";
-const defaults = { language: "en", englishFunny: 1, cantoneseFunny: 1, appearance: "system" };
+const defaults = { language: "en", englishFunny: 5, cantoneseFunny: 5, appearance: "system" };
 const choices = { language: ["en", "yue", "bilingual"], appearance: ["system", "light", "dark"] };
 
 export function validatePreferences(value) {
@@ -45,6 +45,7 @@ const copy = {
   cropType: ["Crop and seed", "農作物同種子"], itemType: ["Item", "物品"], animalType: ["Animal", "動物"], recipeType: ["Recipe", "食譜"], buildingType: ["Building", "建築"], upgradeType: ["Upgrade", "升級"],
   entriesShown: ["entries shown", "項資料顯示中"], pagesMatched: ["wiki pages matched", "篇百科文章符合"], guideResults: ["guide results", "項指南結果"],
   coverage: ["Navigation and settings are translated. Detailed articles and catalogue descriptions currently remain in English.", "導覽同設定已有翻譯；詳細文章同圖鑑說明目前仍然係英文。"],
+  funnyDefaults: ["Both funny levels start at 5. They style the settings message here; wider guide messages, errors, and warnings still need the same treatment.", "兩條幽默滑桿都由 5 開始。目前只會改呢度嘅設定訊息；其他指南訊息、錯誤同警告仲要補返。"],
 };
 
 export function translated(key, mode) {
@@ -66,7 +67,7 @@ export function mountGuidePreferences(onChange = () => {}) {
   const region = document.createElement("section");
   region.className = "guide-preferences";
   region.setAttribute("aria-label", "Guide settings");
-  region.innerHTML = `<details><summary data-guide-copy="settings">Guide settings</summary><div class="guide-preference-grid"><label><span data-guide-copy="language">Language</span><select data-pref="language"><option value="en" data-guide-copy="en">English</option><option value="yue" data-guide-copy="yue">Playful Hong Kong Cantonese</option><option value="bilingual" data-guide-copy="bilingual">English and Cantonese</option></select></label><label><span data-guide-copy="englishFunny">English funny level</span><input data-pref="englishFunny" type="range" min="1" max="5" step="1"><output data-output="englishFunny"></output></label><label><span data-guide-copy="cantoneseFunny">Cantonese funny level</span><input data-pref="cantoneseFunny" type="range" min="1" max="5" step="1"><output data-output="cantoneseFunny"></output></label><label><span data-guide-copy="appearance">Appearance</span><select data-pref="appearance"><option value="system" data-guide-copy="system">Follow device</option><option value="light" data-guide-copy="light">Light</option><option value="dark" data-guide-copy="dark">Dark</option></select></label></div><p class="preference-status" role="status" aria-live="polite"></p><p class="preference-coverage" data-guide-copy="coverage">Navigation and settings are translated. Detailed articles and catalogue descriptions currently remain in English.</p></details>`;
+  region.innerHTML = `<details><summary data-guide-copy="settings">Guide settings</summary><div class="guide-preference-grid"><label><span data-guide-copy="language">Language</span><select data-pref="language"><option value="en" data-guide-copy="en">English</option><option value="yue" data-guide-copy="yue">Playful Hong Kong Cantonese</option><option value="bilingual" data-guide-copy="bilingual">English and Cantonese</option></select></label><label><span data-guide-copy="englishFunny">English funny level</span><input data-pref="englishFunny" type="range" min="1" max="5" step="1"><output data-output="englishFunny"></output></label><label><span data-guide-copy="cantoneseFunny">Cantonese funny level</span><input data-pref="cantoneseFunny" type="range" min="1" max="5" step="1"><output data-output="cantoneseFunny"></output></label><label><span data-guide-copy="appearance">Appearance</span><select data-pref="appearance"><option value="system" data-guide-copy="system">Follow device</option><option value="light" data-guide-copy="light">Light</option><option value="dark" data-guide-copy="dark">Dark</option></select></label></div><p class="preference-status" role="status" aria-live="polite"></p><p class="preference-coverage" data-guide-copy="funnyDefaults">Both funny levels start at 5. They style the settings message here; wider guide messages, errors, and warnings still need the same treatment.</p><p class="preference-coverage" data-guide-copy="coverage">Navigation and settings are translated. Detailed articles and catalogue descriptions currently remain in English.</p></details>`;
   header.after(region);
   const media = window.matchMedia?.("(prefers-color-scheme: dark)");
   const paint = () => {

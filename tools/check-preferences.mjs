@@ -4,13 +4,15 @@ import { readPreferences, writePreferences, resolveAppearance, funnyMessage, tra
 
 const stored = new Map();
 const storage = { getItem: key => stored.get(key) ?? null, setItem: (key, value) => stored.set(key, value) };
-assert.deepEqual(readPreferences(storage), { language: "en", englishFunny: 1, cantoneseFunny: 1, appearance: "system" });
+assert.deepEqual(readPreferences(storage), { language: "en", englishFunny: 5, cantoneseFunny: 5, appearance: "system" });
 writePreferences({ language: "yue", englishFunny: 5, cantoneseFunny: 2, appearance: "dark" }, storage);
 assert.deepEqual(readPreferences(storage), { language: "yue", englishFunny: 5, cantoneseFunny: 2, appearance: "dark" });
 writePreferences({ language: "unknown", englishFunny: 9, cantoneseFunny: -1, appearance: "unknown" }, storage);
-assert.deepEqual(readPreferences(storage), { language: "en", englishFunny: 1, cantoneseFunny: 1, appearance: "system" });
+assert.deepEqual(readPreferences(storage), { language: "en", englishFunny: 5, cantoneseFunny: 5, appearance: "system" });
 stored.set("farm-tycoon-guide-preferences-v1", "{broken");
 assert.equal(readPreferences(storage).language, "en");
+assert.equal(readPreferences(storage).englishFunny, 5);
+assert.equal(readPreferences(storage).cantoneseFunny, 5);
 assert.equal(resolveAppearance("system", true), "dark");
 assert.equal(resolveAppearance("system", false), "light");
 assert.equal(resolveAppearance("light", true), "light");
