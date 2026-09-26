@@ -4,6 +4,8 @@ The live guide's "How the pieces fit together" section explains claiming and bui
 
 Game state changes are server-authoritative. A missing save, incomplete transaction or rejected action is a visible failure, not a successful purchase or harvest. Studio profiles are session-only; durable persistence must be checked after publication through a full leave and rejoin.
 
+The starter order needs two bread and awards 50 coins and 20 XP. Later orders cannot refresh until it is fulfilled. The production acceleration rule costs five diamonds and applies only to the first queued job when that job is not already ready. These are source-defined rules, not evidence of a successful purchase or published-server transaction.
+
 The site stores no account data, payments, inventory, or player progress. Its search operates on its bundled public catalogue snapshot. No game script, private model original, or purchase route is embedded in this documentation site.
 
 **Verification:** review every explanation against the reconciled source definitions and current native receipts; confirm the published page contains the section and still labels the live acceptance boundary. Check the section at narrow and desktop widths.

@@ -25,14 +25,14 @@ function itemDescription(item) {
   }
   const recipe = recipeByOutput.get(id);
   const made = uses(id);
-  return `${recipe ? `Produce ${recipe.output} at the ${recipe.station.toLowerCase()} from ${recipe.input}; the current production timer is ${pace(recipe.seconds)} seconds and the recipe unlocks at level ${recipe.level}.` : "This item is part of the production catalogue."} ${made.length ? `It is also used in ${made.join(", ")}.` : "Once collected, it can be stored, sold, or used in an order when offered."}`;
+  return `${recipe ? `Produce ${recipe.output} at the ${recipe.station.toLowerCase()} from ${recipe.input}; the current production timer is ${pace(recipe.seconds)} seconds and the recipe rule unlocks at level ${recipe.level}. The station and ingredients must also be available.${recipe.availability ? ` ${recipe.availability}` : ""}` : "This item is part of the production catalogue."} ${made.length ? `It is also used in ${made.join(", ")}.` : "Once collected, it can be stored, sold, or used in an order when offered."}`;
 }
 
 function details(category, entry) {
   switch (category) {
     case "crops": return [`Unlock: level ${entry.level}`, `Seed price: ${entry.price} coins`, `Current growth: ${pace(entry.seconds)} seconds`, `Harvest: ${entry.yield} + ${entry.xp} XP`, entry.note];
     case "animals": return [`Unlock: level ${entry.level}`, `Purchase: ${entry.purchase} coins`, `Feed: ${entry.feed}`, `Collect: ${entry.yield} ${entry.product.toLowerCase()} after ${pace(entry.seconds)} seconds`, entry.note];
-    case "recipes": return [`Station: ${entry.station}`, `Unlock: level ${entry.level}`, `Inputs: ${entry.input}`, `Output: ${entry.output}`, `Current timer: ${pace(entry.seconds)} seconds`];
+    case "recipes": return [`Station: ${entry.station}`, `Recipe unlock: level ${entry.level}`, `Inputs: ${entry.input}`, `Output: ${entry.output}`, `Current timer: ${pace(entry.seconds)} seconds`, ...(entry.availability ? [entry.availability] : [])];
     case "buildings": return [`Unlock: level ${entry.level}`, `Cost: ${entry.coins} coins + ${entry.materials.toLowerCase()}`, `Current build timer: ${pace(entry.seconds)} seconds`, entry.note];
     case "upgrades": return [`Maximum tier: ${entry.max}`, `Tier cost: ${entry.base} × next tier coins`, `Effect: ${entry.effect}`, "Apply an upgrade through an authoritative transaction; a definition alone does not prove published availability."];
     default: return [`Definition value: ${entry.value} coins`, `Type: ${entry.kind}`, itemDescription(entry)];

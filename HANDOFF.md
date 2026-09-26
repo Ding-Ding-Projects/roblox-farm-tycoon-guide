@@ -1,5 +1,9 @@
 # Guide handoff
 
+## Definition accuracy update in progress, September 26, 2026
+
+A read-only comparison at game source `f725458da9331fa601104fa37ac48a487df0d41a` found no missing entries in the six catalogue groups, but found that the public land-upgrade card described construction capacity where the running economy rule applies the upgrade to animal placement capacity. Guide version `0.1.4` corrects that effect, distinguishes recipe unlock levels from access to their ingredients and stations, and explains the starter order and five-diamond production acceleration. Build, publication and readback must be recorded after the updated files are committed. The native GitHub wiki and Roblox public beta remain open.
+
 The public guide source was created from Farm Tycoon source commit `163c8305694d8a25b453031b4bc54bc431af4642`. Its definitions and original lore are separate from a Roblox publication. The site labels local observations and development entries separately. The currently selected Studio scene identifies the earlier installed source `535551f43050e87f1f6893a38c484cb656fc6811`; no public beta success is claimed from that local scene.
 
 Run `build.bat` to refresh guide build provenance and validate the hand-written catalogue inventory. GitHub Pages is published from `main` at `https://ding-ding-projects.github.io/roblox-farm-tycoon-guide/`; its latest build reported `built` on September 26, 2026, and unauthenticated readback returned HTTP 200 for the page, catalogue, provenance, and social image. The repository homepage points to that URL.

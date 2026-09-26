@@ -6,6 +6,8 @@ The guide enumerates every current `ContentDefinitions.lua` crop, item, animal, 
 
 The catalogue must be updated whenever the private game definitions change. Review the public export, confirm no private model source or account data crossed the boundary, run `build.bat`, and update the source commit in the guide. A missing or newly added definition is a release blocker until the hand-written inventory and explanations agree.
 
+Recipe unlock levels describe the recipe rule, not guaranteed access to every input and station. The chicken-feed card distinguishes its level-1 recipe from level-2 self-grown corn; the butter card distinguishes its level-6 recipe from level-8 dairy construction. The land upgrade currently increases animal placement capacity, capped at 16, rather than construction capacity.
+
 **Verification:** `node tools/check.mjs` checks exact category counts, unique IDs, recipe outputs and stations, status labels, assets, and build provenance. The live page must also be checked in a browser at desktop and narrow widths.
 
 **Suggested articles:** [Farm systems](systems.md), [World lore](lore.md), [guide index](README.md), and the [live field guide](https://ding-ding-projects.github.io/roblox-farm-tycoon-guide/).

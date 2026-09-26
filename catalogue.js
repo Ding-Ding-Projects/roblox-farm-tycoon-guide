@@ -19,14 +19,14 @@ export const animals = [
 ];
 
 export const recipes = [
-  { id: "chicken_feed", name: "Chicken feed", station: "Feedmill", level: 1, seconds: 30, input: "2 wheat + 1 corn", output: "2 chicken feed", status: "observed" },
+  { id: "chicken_feed", name: "Chicken feed", station: "Feedmill", level: 1, seconds: 30, input: "2 wheat + 1 corn", output: "2 chicken feed", status: "observed", availability: "The recipe unlocks at level 1. Growing its corn input on your own farm requires level 2." },
   { id: "cow_feed", name: "Cow feed", station: "Feedmill", level: 5, seconds: 45, input: "2 corn + 2 soybean", output: "2 cow feed", status: "development" },
   { id: "sheep_feed", name: "Sheep feed", station: "Feedmill", level: 9, seconds: 55, input: "2 wheat + 3 soybean", output: "2 sheep feed", status: "development" },
   { id: "pig_feed", name: "Pig feed", station: "Feedmill", level: 12, seconds: 50, input: "3 corn + 2 carrot", output: "2 pig feed", status: "development" },
   { id: "bread", name: "Bread", station: "Bakery", level: 3, seconds: 45, input: "3 wheat", output: "1 bread", status: "development" },
   { id: "carrot_cake", name: "Carrot cake", station: "Bakery", level: 8, seconds: 75, input: "2 carrot + 2 wheat + 1 egg", output: "1 carrot cake", status: "development" },
   { id: "cheese", name: "Cheese", station: "Dairy", level: 9, seconds: 60, input: "2 milk", output: "1 cheese", status: "development" },
-  { id: "butter", name: "Butter", station: "Dairy", level: 6, seconds: 40, input: "1 milk", output: "1 butter", status: "development" },
+  { id: "butter", name: "Butter", station: "Dairy", level: 6, seconds: 40, input: "1 milk", output: "1 butter", status: "development", availability: "The recipe unlocks at level 6. Constructing your own dairy requires level 8." },
   { id: "sugar", name: "Sugar", station: "Sugarmill", level: 7, seconds: 50, input: "3 sugarcane", output: "2 sugar", status: "development" },
   { id: "strawberry_jam", name: "Strawberry jam", station: "Preserves", level: 11, seconds: 80, input: "3 strawberry + 1 sugar", output: "1 strawberry jam", status: "development" },
   { id: "apple_preserves", name: "Apple preserves", station: "Preserves", level: 13, seconds: 85, input: "3 apple + 1 sugar", output: "1 apple preserves", status: "development" },
@@ -67,5 +67,5 @@ export const upgrades = [
   { id: "barn", name: "Barn capacity", max: 4, base: 100, effect: "+25 inventory capacity per tier", status: "development" },
   { id: "silo", name: "Silo capacity", max: 3, base: 140, effect: "+15 inventory capacity per tier", status: "development" },
   { id: "queue", name: "Production queue", max: 3, base: 80, effect: "+1 production slot per tier", status: "development" },
-  { id: "land", name: "Land", max: 8, base: 120, effect: "+1 build allowance per tier", status: "development" },
+  { id: "land", name: "Land", max: 8, base: 120, effect: "+1 animal placement allowance per tier, up to the current cap of 16", status: "development" },
 ];
