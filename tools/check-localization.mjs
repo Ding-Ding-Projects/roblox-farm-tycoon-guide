@@ -12,7 +12,8 @@ const list = readdirSync(new URL("wiki-source-yue/", root)).sort();
 if (process.argv.includes("--negative")) list.pop();
 assert.deepEqual(list, expected, "Every English wiki article needs a Cantonese counterpart");
 for (const file of expected) {
-  const en = read(`wiki-source/${file}`), yue = read(`wiki-source-yue/${file}`);
+  const en = read(`wiki-source/${file}`).replace(/\r\n?/g, "\n");
+  const yue = read(`wiki-source-yue/${file}`).replace(/\r\n?/g, "\n");
   assert.match(en, /^# /);
   assert.match(yue, /^# /);
   assert((yue.match(/[\u3400-\u9fff]/g) ?? []).length > 90, `${file} needs a complete written Cantonese body`);
