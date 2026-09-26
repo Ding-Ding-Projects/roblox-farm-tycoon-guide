@@ -62,6 +62,7 @@ export function createSearchWorkbench(input, onChange, getPreferences = () => ({
     const local = (english) => mode === "yue" ? yue[english] ?? english : mode === "bilingual" ? `${english} · ${yue[english] ?? english}` : english;
     button.textContent = local("Regex builder");
     input.setAttribute("aria-label", local("Search guide"));
+    panel.querySelector(".builder-check").lastChild.textContent = ` ${local("Use regular expression")}`;
     $("replacement").placeholder = mode === "yue" ? "使用 $& 或 $<名稱>" : mode === "bilingual" ? "Use $& or $<name> · 使用 $& 或 $<名稱>" : "Use $& or $<name>";
     for (const [node, original] of originals) if (original !== null && node.firstChild) {
       const trimmed = original.trim();

@@ -3,7 +3,7 @@ import { createSearchWorkbench } from "./search-workbench.js";
 import { wikiPages } from "./search-index.js";
 import { crops, animals, recipes, items, buildings, upgrades } from "./catalogue.js";
 import { mountGuidePreferences, translated } from "./guide-preferences.js";
-import { nameYue } from "./catalogue-yue.js";
+import { nameYue, catalogueSearchYue } from "./catalogue-yue.js";
 
 let getPreferences = () => ({ language: "en", englishFunny: 5, cantoneseFunny: 5 });
 let releaseData = null;
@@ -13,12 +13,16 @@ const label = document.createElement("label"); label.htmlFor = "wiki-search"; la
 const input = document.createElement("input"); input.id = "wiki-search"; input.type = "search"; input.autocomplete = "off";
 const results = document.createElement("div"); results.className = "search-results"; results.setAttribute("aria-live", "polite");
 searchRegion.append(label, input, results); nav.before(searchRegion);
-const allRecords = Object.entries({ crops, animals, recipes, items, buildings, upgrades }).flatMap(([category, values]) => values.map(entry => ({ title: entry.name, yueTitle: nameYue(entry.id), href: `../index.html#${category}-${entry.id}`, text: JSON.stringify(entry) })));
+const allRecords = Object.entries({ crops, animals, recipes, items, buildings, upgrades }).flatMap(([category, values]) => values.map(entry => ({ title: entry.name, yueTitle: nameYue(entry.id), href: `../index.html#${category}-${entry.id}`, text: `${JSON.stringify(entry)} ${catalogueSearchYue(category, entry)}` })));
 const workbench = createSearchWorkbench(input, renderSearch, () => getPreferences());
 function renderSearch() {
   const preference = getPreferences();
   workbench.paint();
   const localizedLabel = (en, yue) => preference.language === "yue" ? yue : preference.language === "bilingual" ? `${en} · ${yue}` : en;
+  const englishTitle = document.querySelector(".locale-en h1").textContent;
+  const cantoneseTitle = document.querySelector(".locale-yue h1").textContent;
+  document.title = localizedLabel(`${englishTitle} | Farm Tycoon Field Guide`, `${cantoneseTitle} | Farm Tycoon 農場指南`);
+  document.querySelector('meta[name="description"]').content = localizedLabel(`Farm Tycoon field guide wiki: ${englishTitle}`, `Farm Tycoon 農場指南百科：${cantoneseTitle}`);
   document.querySelector(".topbar nav").setAttribute("aria-label", localizedLabel("Main navigation", "主導覽"));
   document.querySelector(".wiki-nav").setAttribute("aria-label", localizedLabel("Wiki pages", "百科文章"));
   document.querySelector("#wiki-version").textContent = formatGuideVersion(releaseData, { language: preference.language });

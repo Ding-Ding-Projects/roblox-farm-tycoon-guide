@@ -49,3 +49,15 @@ export const upgradeEffects = {
   "+1 production slot per tier": "每級增加 1 個生產欄位",
   "+1 animal placement allowance per tier, up to the current cap of 16": "每級增加 1 個動物擺放名額，目前上限為 16",
 };
+export function catalogueSearchYue(category, entry) {
+  const common = [nameYue(entry.id), entry.note && notes[entry.note], entry.availability && notes[entry.availability]];
+  switch (category) {
+    case "crops": common.push(`解鎖等級 ${entry.level}`, `種子價錢 ${entry.price} 金幣`, `生長時間 ${entry.seconds} 秒`, `收成 ${entry.yield}`, `${entry.xp} XP`); break;
+    case "animals": common.push(`解鎖等級 ${entry.level}`, `買入價 ${entry.purchase} 金幣`, `飼料 ${nameYue(entry.feed)}`, `收集 ${nameYue(entry.product)}`); break;
+    case "recipes": common.push(`食譜解鎖等級 ${entry.level}`, `工作站 ${nameYue(entry.station)}`, `原料 ${quantityYue(entry.input)}`, `產出 ${quantityYue(entry.output)}`, `製作時間 ${entry.seconds} 秒`); break;
+    case "buildings": common.push(`解鎖等級 ${entry.level}`, `建造成本 ${entry.coins} 金幣 ${quantityYue(entry.materials)}`, `建造時間 ${entry.seconds} 秒`); break;
+    case "upgrades": common.push(`最高級數 ${entry.max}`, `每級成本 ${entry.base} 金幣`, `效果 ${upgradeEffects[entry.effect]}`); break;
+    default: common.push(`定義價值 ${entry.value} 金幣`);
+  }
+  return common.filter(Boolean).join(" ");
+}
