@@ -22,6 +22,24 @@ The guide image above is a genuine capture of the live 0.1.6 home page at a 390 
 
 The two 0.1.9 images are unedited captures from the live Pages build `d00d993aadcb5b23e67192258ff98b1fc79c9623`. The settings image was captured at `2026-09-26T09:11:56.841Z` (UTC) after a persisted-language reload; the World Lore image was captured at `2026-09-26T09:13:54.084Z` (UTC). Both use a 390 by 844 emulated mobile viewport. The [capture inventory](docs/capture-inventory.json) carries their exact hashes and privacy review. They do not establish behavior on a physical phone or every wiki route.
 
+<details><summary>All seven site-hosted wiki entry points</summary>
+
+The six additional 0.1.9 images below came from their exact live wiki routes. The index was viewed in Cantonese; the five articles were viewed in English. Each run checked its visible front-screen version, accessible control names, body overflow, console errors and network failures. The [version surface inventory](docs/guide/version-surface-inventory.md) records each route's result. These individual views do not prove every language, theme, scale or search path.
+
+![Farm Tycoon wiki index in Cantonese at a 390 pixel emulated mobile viewport](docs/captures/guide-wiki-index-yue-mobile-0.1.9.png)
+
+![Farm Tycoon wiki Home article in English at a 390 pixel emulated mobile viewport](docs/captures/guide-wiki-home-en-mobile-0.1.9.png)
+
+![Farm Tycoon Getting Started article in English at a 390 pixel emulated mobile viewport](docs/captures/guide-wiki-getting-started-en-mobile-0.1.9.png)
+
+![Farm Tycoon Crops and Items article in English at a 390 pixel emulated mobile viewport](docs/captures/guide-wiki-crops-and-items-en-mobile-0.1.9.png)
+
+![Farm Tycoon Buildings and Production article in English at a 390 pixel emulated mobile viewport](docs/captures/guide-wiki-buildings-and-production-en-mobile-0.1.9.png)
+
+![Farm Tycoon Beta Status article in English at a 390 pixel emulated mobile viewport](docs/captures/guide-wiki-beta-status-en-mobile-0.1.9.png)
+
+</details>
+
 <details><summary>Catalogue and evidence</summary>
 
 The public catalogue snapshot is in `catalogue.js`; it records 7 crops, 31 items, 4 animals, 13 recipes, 14 buildings, and 4 upgrades from private game source commit `163c8305694d8a25b453031b4bc54bc431af4642`. `Observed locally` means a selected route has real Studio evidence, not that every path or the public server was verified. `In development` means the source defines the entry but the full playable route lacks acceptance. The guide's `release.json` records the running guide version and build time.
